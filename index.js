@@ -3,15 +3,21 @@ import { stdin as input, stdout as output } from 'node:process';
 import { livroFisico, Ebook } from './TiposDeltens.js';
 import { Leitor } from './Leitor.js';
 const rl = readline.createInterface ({ input, output });
+import { AtendimentoBiblioteca } from './AtendimentoBiblioteca.js';
+
 
 async function iniciarSistema() {
     let livro;
 
     console.log("=== SISTEMA DE LOGISTICA BIBLIOTECA ===");
-    const nome = await rl.question("Digite o nome do leitor: ");
-    const idade = parseInt(await rl.question("Digit a idade do leitor: "));
+    const nome = await rl.question;
+    const leitor = new AtendimentoBiblioteca();
+    
 
-    const leitor = new Leitor (nome, idade);
+
+    leitor.cadastrarNovoLeitor("adriano", "DEZ");
+    leitor.cadastrarNovoLeitor("adriano", 10);
+    leitor.cadastrarNovoLeitor("adriano", 25);
     console.log("\nSelecione o tipo de livro: ");
     console.log("1- Livro Físico");
     console.log("2- Ebook");
@@ -50,7 +56,7 @@ else {
     console.log(`Autor do livro: ${livro.Autor}`);
     console.log(`Ano de publicação do livro: ${livro.anoPublicado}`);
     console.log(`\n Valor da multa: R$ ${valorDaMulta.toFixed(2)}`);
-}
+ }
 rl.close();
 }
 iniciarSistema();

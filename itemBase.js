@@ -13,10 +13,13 @@ this.Titulo = tituloIN;
 get anoPublicado() { this.#anoPublicado}
 
 set anoPublicado(anoPublicadoIN) {
- if ( anoPublicadoIN <= 1000 || anoPublicadoIN >= 2026){
-    throw new error("[Erro] O ano do livro nao pode ser maior que 2026 anos ou menor que 1000 anos");
+    if ( anoPublicadoIN <= 1000 || anoPublicadoIN >= 2026){
+        throw new error("ERR_ANO_FORA_DO_LIMITE");
 }
-    return;
+    if (typeof anoPublicadoIN !== "number" || isNaN (anoPublicadoIN)) {
+throw new Error("ERR_TIPO_ANO_INVALIDO");
+}
+return;
 }
 
 calcularMulta() {
